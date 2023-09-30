@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+  Movie
+    <a href="{% url 'movie_rating:movie-delete' pk=movie.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'movie_rating:movie-update' pk=movie.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+  <p>{{ movie }}</p>
+  <h3>Description</h3>
+  <p style="width: 40%">{{ movie.description }}</p>
+  <h3>
+
+
+{#    {% if car in user.cars.all %}#}
+{#      <a href="{% url 'movie_rating:toggle-movie-assign' pk=movie.id %}" class="btn btn-danger link-to-page">#}
+{#        Delete me from this car#}
+{#      </a>#}
+{#    {% else %}#}
+{#      <a href="{% url 'movie_rating:toggle-movie-assign' pk=movie.id %}" class="btn btn-success link-to-page">#}
+{#        Assign me from this car#}
+{#      </a>#}
+{#    {% endif %}#}
+  </h3>
+  <hr>
+{#  <ul>#}
+{#    {% for driver in car.drivers.all %}#}
+{#      <li>{{ driver.username }} ({{ driver.first_name }} {{ driver.last_name }})</li>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{% endblock %}

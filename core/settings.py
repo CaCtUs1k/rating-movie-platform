@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "movie_rating_platform",
     'debug_toolbar',
     "crispy_forms",
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
