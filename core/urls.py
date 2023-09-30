@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("", include("movie_rating_platform.urls", namespace="movie_rating")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

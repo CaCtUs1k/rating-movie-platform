@@ -3,6 +3,9 @@ import datetime
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.urls import reverse
+
+from movie_rating_platform.utils.utils_model import custom_title
 
 
 class Genre(models.Model):
@@ -35,12 +38,19 @@ class Movie(models.Model):
     poster_link = models.CharField(max_length=255, null=True, blank=True)
     genres = models.ManyToManyField(Genre, "movies")
 
+    def save(self, *args, **kwargs):
+        self.title = custom_title(self.title)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.title} ({self.release_year})"
 
 
 class Visitor(AbstractUser):
     wishlist = models.ManyToManyField(Movie, "users",)
+
+    def get_absolute_url(self):
+        return reverse("movie_rating:visitor-detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return f"{self.username}"
