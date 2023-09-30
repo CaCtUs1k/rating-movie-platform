@@ -1,19 +1,19 @@
 from django.contrib.auth import get_user_model
-from django.http import HttpRequest
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from movie_rating_platform.forms import MovieSearchForm
-from movie_rating_platform.models import Movie, Rating, Genre
+from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm
+from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
 
-def index(request: HttpRequest):
+def index(request: HttpRequest) -> HttpResponse:
     context = {
         "num_movies": Movie.objects.count(),
         "num_ratings": Rating.objects.count(),
         "num_genres": Genre.objects.count(),
-        "num_visitors": get_user_model().objects.count()
+        "num_users": get_user_model().objects.count()
     }
     return render(
         request,
@@ -65,3 +65,46 @@ class MovieDeleteView(generic.DeleteView):
     model = Movie
     success_url = reverse_lazy("movie_rating:movie-list")
 
+
+class VisitorListView(generic.ListView):
+    model = Visitor
+    paginate_by = 5
+    queryset = Visitor.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(VisitorListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = VisitorSearchForm(
+            initial={"username": username}
+        )
+        return context
+
+    def get_queryset(self):
+        form = VisitorSearchForm(self.request.GET)
+        if form.is_valid():
+            return self.queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return self.queryset
+
+
+class VisitorDetailView(generic.DetailView):
+    model = Visitor
+    queryset = Visitor.objects.all().prefetch_related("wishlist")
+
+
+class VisitorCreateView(generic.CreateView):
+    model = Visitor
+    success_url = reverse_lazy("movie_rating:visitor-list")
+    form_class = VisitorCreationForm
+
+
+class VisitorUpdateView(generic.UpdateView):
+    model = Visitor
+    form_class = VisitorCreationForm
+    success_url = reverse_lazy("movie_rating:visitor-list")
+
+
+class VisitorDeleteView(generic.DeleteView):
+    model = Visitor
+    success_url = reverse_lazy("movie_rating:visitor-list")

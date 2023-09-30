@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Visitor List
+    <a href="{% url 'movie_rating:visitor-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔍">
+  </form>
+  {% if visitor_list %}
+    {% for visitor in visitor_list %}
+      <p><a class="username" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %}(Me){% endif %}</a></p>
+    {% endfor %}
+  {% else %}
+    <p>There are no visitors in the service!</p>
+  {% endif %}
+{% endblock %}
