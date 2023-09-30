@@ -34,3 +34,13 @@ class VisitorCreationForm(UserCreationForm):
             "last_name",
             "wishlist"
         )
+
+
+class VisitorUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Visitor
+        fields = (
+            "first_name",
+            "last_name",
+            "username"
+        )

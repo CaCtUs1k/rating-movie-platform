@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm
+from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm, VisitorUpdateForm
 from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
 
@@ -101,7 +101,7 @@ class VisitorCreateView(generic.CreateView):
 
 class VisitorUpdateView(generic.UpdateView):
     model = Visitor
-    form_class = VisitorCreationForm
+    form_class = VisitorUpdateForm
     success_url = reverse_lazy("movie_rating:visitor-list")
 
 
