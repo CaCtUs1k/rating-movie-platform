@@ -14,7 +14,7 @@
   </form>
   {% if visitor_list %}
     {% for visitor in visitor_list %}
-      <p><a class="username" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %}(Me){% endif %}</a></p>
+      <p><a class="username" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %} (Me){% endif %}</a></p>
     {% endfor %}
   {% else %}
     <p>There are no visitors in the service!</p>

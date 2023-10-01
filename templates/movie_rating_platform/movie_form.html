@@ -8,5 +8,6 @@
     {{ form|crispy }}
 
     <input type="submit" value="Submit" class="btn btn-primary">
+    <a class="btn btn-primary" href="{% url 'movie_rating:movie-detail' pk=pk %}">Cancel</a>
   </form>
 {% endblock %}

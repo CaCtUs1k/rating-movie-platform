@@ -57,14 +57,19 @@ class Visitor(AbstractUser):
 
 
 class Rating(models.Model):
-    value = models.IntegerField()
+    value = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(10)
+        ]
+    )
     description = models.TextField(null=True, blank=True)
     sender = models.ForeignKey(Visitor, on_delete=models.DO_NOTHING, related_name="ratings")
     create_time = models.DateTimeField(auto_now_add=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="ratings")
 
     def __str__(self):
-        return f"{self.value} / 10\n{self.description}\n by {self.sender.username}"
+        return self.description
 
 
 class Like(models.Model):

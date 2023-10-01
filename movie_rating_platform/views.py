@@ -1,10 +1,13 @@
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy, reverse
+from django.utils import timezone
 from django.views import generic
+from django.views.decorators.cache import cache_page
 
-from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm, VisitorUpdateForm
+from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm, VisitorUpdateForm, \
+    CreateOrUpdateRatingForm
 from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
 
@@ -42,11 +45,6 @@ class MovieListView(generic.ListView):
                 title__icontains=form.cleaned_data["title"]
             )
         return self.queryset
-
-
-class MovieDetailView(generic.DetailView):
-    model = Movie
-    queryset = Movie.objects.all().prefetch_related("genres")
 
 
 class MovieCreateView(generic.CreateView):
@@ -108,3 +106,49 @@ class VisitorUpdateView(generic.UpdateView):
 class VisitorDeleteView(generic.DeleteView):
     model = Visitor
     success_url = reverse_lazy("movie_rating:visitor-list")
+
+
+def movie_detail_view(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    genres = movie.genres.all()
+    max_value = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    movie.ratings.select_related("sender")
+    context = {"movie": movie, "genres": genres, "max_value": max_value}
+    return render(request, "movie_rating_platform/movie_detail.html", context=context)
+
+
+def create_rating_view(request, pk):
+    if request.method == 'POST':
+        form = CreateOrUpdateRatingForm(request.POST)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.sender = request.user
+            rating.create_time = timezone.now()
+            rating.movie = Movie.objects.get(pk=pk)
+            rating.save()
+            return redirect('movie_rating:movie-detail', pk=pk)
+    else:
+        form = CreateOrUpdateRatingForm
+    return render(request, "movie_rating_platform/rating_form.html", context={'form': form, "pk": pk})
+
+
+class RatingUpdateView(generic.UpdateView):
+    model = Rating
+    form_class = CreateOrUpdateRatingForm
+    success_url = reverse_lazy("movie_rating:movie-detail")
+
+
+class RatingDeleteView(generic.DeleteView):
+    model = Rating
+    success_url = reverse_lazy("movie_rating:movie-detail", )
+
+
+def toggle_assign_to_movie(request, pk):
+    visitor = Visitor.objects.get(id=request.user.id)
+    if (
+        Movie.objects.get(id=pk) in visitor.wishlist.all()
+    ):
+        visitor.wishlist.remove(pk)
+    else:
+        visitor.wishlist.add(pk)
+    return HttpResponseRedirect(reverse("movie_rating:movie-detail", args=[pk]))

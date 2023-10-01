@@ -13,3 +13,4 @@ def custom_title(
         else:
             title_case_words.append(word)
     return ' '.join(title_case_words)
+
