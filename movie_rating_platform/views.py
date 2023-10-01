@@ -135,12 +135,12 @@ def create_rating_view(request, pk):
 class RatingUpdateView(generic.UpdateView):
     model = Rating
     form_class = CreateOrUpdateRatingForm
-    success_url = reverse_lazy("movie_rating:movie-detail")
+    success_url = reverse_lazy("movie_rating:movie-list")
 
 
 class RatingDeleteView(generic.DeleteView):
     model = Rating
-    success_url = reverse_lazy("movie_rating:movie-detail", )
+    success_url = reverse_lazy("movie_rating:movie-list")
 
 
 def toggle_assign_to_movie(request, pk):

@@ -42,5 +42,11 @@
     {{ rating }}
   {% endfor %}
   <hr>
-  <a class="btn btn-primary" href="{% url 'movie_rating:rating-create' pk=movie.pk %}">Add Rating</a>
+{% if user.is_authenticated %}
+    {% if user not in movie.ratings.sender %}
+        <a class="btn btn-primary" href="{% url 'movie_rating:rating-create' pk=movie.pk %}">Add Rating</a>
+    {% endif %}
+{% else %}
+    <p>Please log in to leave a rating.</p>
+{% endif %}
 {% endblock %}
