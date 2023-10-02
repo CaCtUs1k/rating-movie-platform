@@ -74,4 +74,4 @@ class Rating(models.Model):
 
 class Like(models.Model):
     sender = models.ForeignKey(Visitor, on_delete=models.DO_NOTHING, related_name="likes")
-    target = models.ForeignKey(Rating, on_delete=models.DO_NOTHING, related_name="likes")
+    target = models.ForeignKey(Movie, on_delete=models.DO_NOTHING, related_name="likes")

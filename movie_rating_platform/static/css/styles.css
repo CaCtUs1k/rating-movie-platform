@@ -1,0 +1,21 @@
+/* header */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.sticky-header ul {
+    padding: 10px;
+}
+
+.sidebar-nav.list-group {
+    margin-top: 56px;
+}
+.star {
+    font-size: 100px;
+    color: gold;
+}

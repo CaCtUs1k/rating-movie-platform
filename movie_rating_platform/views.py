@@ -1,16 +1,18 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.views import generic
-from django.views.decorators.cache import cache_page
 
 from movie_rating_platform.forms import MovieSearchForm, VisitorCreationForm, VisitorSearchForm, VisitorUpdateForm, \
     CreateOrUpdateRatingForm
 from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     context = {
         "num_movies": Movie.objects.count(),
@@ -25,7 +27,7 @@ def index(request: HttpRequest) -> HttpResponse:
     )
 
 
-class MovieListView(generic.ListView):
+class MovieListView(LoginRequiredMixin, generic.ListView):
     model = Movie
     paginate_by = 5
     queryset = Movie.objects.all()
@@ -47,24 +49,24 @@ class MovieListView(generic.ListView):
         return self.queryset
 
 
-class MovieCreateView(generic.CreateView):
+class MovieCreateView(LoginRequiredMixin, generic.CreateView):
     model = Movie
     fields = "__all__"
     success_url = reverse_lazy("movie_rating:movie-list")
 
 
-class MovieUpdateView(generic.UpdateView):
+class MovieUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Movie
     fields = "__all__"
     success_url = reverse_lazy("movie_rating:movie-list")
 
 
-class MovieDeleteView(generic.DeleteView):
+class MovieDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Movie
     success_url = reverse_lazy("movie_rating:movie-list")
 
 
-class VisitorListView(generic.ListView):
+class VisitorListView(LoginRequiredMixin, generic.ListView):
     model = Visitor
     paginate_by = 5
     queryset = Visitor.objects.all()
@@ -86,37 +88,44 @@ class VisitorListView(generic.ListView):
         return self.queryset
 
 
-class VisitorDetailView(generic.DetailView):
+class VisitorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Visitor
     queryset = Visitor.objects.all().prefetch_related("wishlist")
 
 
-class VisitorCreateView(generic.CreateView):
+class VisitorCreateView(LoginRequiredMixin, generic.CreateView):
     model = Visitor
     success_url = reverse_lazy("movie_rating:visitor-list")
     form_class = VisitorCreationForm
 
 
-class VisitorUpdateView(generic.UpdateView):
+class VisitorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Visitor
     form_class = VisitorUpdateForm
     success_url = reverse_lazy("movie_rating:visitor-list")
 
 
-class VisitorDeleteView(generic.DeleteView):
+class VisitorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Visitor
     success_url = reverse_lazy("movie_rating:visitor-list")
 
 
+@login_required
 def movie_detail_view(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
-    genres = movie.genres.all()
     max_value = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     movie.ratings.select_related("sender")
-    context = {"movie": movie, "genres": genres, "max_value": max_value}
-    return render(request, "movie_rating_platform/movie_detail.html", context=context)
+    context = {
+        "movie": movie,
+        "max_value": max_value
+    }
+    return render(
+        request,
+        "movie_rating_platform/movie_detail.html",
+        context=context)
 
 
+@login_required
 def create_rating_view(request, pk):
     if request.method == 'POST':
         form = CreateOrUpdateRatingForm(request.POST)
@@ -132,17 +141,18 @@ def create_rating_view(request, pk):
     return render(request, "movie_rating_platform/rating_form.html", context={'form': form, "pk": pk})
 
 
-class RatingUpdateView(generic.UpdateView):
+class RatingUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Rating
     form_class = CreateOrUpdateRatingForm
     success_url = reverse_lazy("movie_rating:movie-list")
 
 
-class RatingDeleteView(generic.DeleteView):
+class RatingDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Rating
     success_url = reverse_lazy("movie_rating:movie-list")
 
 
+@login_required
 def toggle_assign_to_movie(request, pk):
     visitor = Visitor.objects.get(id=request.user.id)
     if (
@@ -152,3 +162,6 @@ def toggle_assign_to_movie(request, pk):
     else:
         visitor.wishlist.add(pk)
     return HttpResponseRedirect(reverse("movie_rating:movie-detail", args=[pk]))
+
+
+

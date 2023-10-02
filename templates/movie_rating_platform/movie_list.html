@@ -14,7 +14,7 @@
   </form>
   {% if movie_list %}
     {% for movie in movie_list %}
-      <p><a href="{% url 'movie_rating:movie-detail' pk=movie.pk %}">{{ movie.pk }}</a>: {{ movie }}</p>
+      <p><a href="{% url 'movie_rating:movie-detail' pk=movie.pk %}">{{ movie.pk }} </a>: {{ movie }}</p>
     {% endfor %}
   {% else %}
     <p>There are no movies in the service!</p>
