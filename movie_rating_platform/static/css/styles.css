@@ -108,7 +108,7 @@ footer {
 }
 /* Pagination */
 .pagination {
-    width: 16%;
+    width: 20%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -122,7 +122,11 @@ footer {
     color: #e8e8e8;
     transition: background-color 0.5s;
 }
-
+.page-item.active span.page-link {
+    background-color: #68727e;
+    color: #e8e8e8;
+    border-color: #68727e;
+}
 /* models shown*/
 .model-show {
     width: 80%;
@@ -162,7 +166,7 @@ footer {
 }
 
 .about-us p {
-        font-size: 1.25rem;
+    font-size: 1.25rem;
     color: #555;
     text-align: left;
 }
@@ -201,7 +205,26 @@ form {
 
 }
 .btn-secondary {
-  background-color: #343a40;
+    background-color: #343a40;
+}
+
+a.btn-primary {
+    background-color: #68727e;
+    border-color: #68727e;
+}
+input.btn-primary {
+    background-color: #68727e;
+    border-color: #68727e;
+}
+
+a.btn-primary:hover {
+    background-color: #343a40;
+    border-color: #68727e;
+}
+
+input.btn-primary:hover {
+    background-color: #343a40;
+    border-color: #68727e;
 }
 
 /* Others */
