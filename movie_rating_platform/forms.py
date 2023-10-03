@@ -28,6 +28,7 @@ class VisitorCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "first_name",
             "last_name",
+            "email",
             "wishlist",
         )
 
@@ -35,7 +36,7 @@ class VisitorCreationForm(UserCreationForm):
 class VisitorUpdateForm(forms.ModelForm):
     class Meta:
         model = Visitor
-        fields = ("first_name", "last_name", "username")
+        fields = ("first_name", "last_name", "username", "email")
 
 
 class CreateOrUpdateRatingForm(forms.ModelForm):
