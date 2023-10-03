@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="centered">
+    <h1>
+      {{ visitor.username }} profile {% if user == visitor %}(You){% endif %}
+      {% if user == visitor %}
+
+        <a href="{% url 'movie_rating:visitor-delete' pk=visitor.id %}" class="btn btn-danger link-to-page">
+          Delete
+        </a>
+
+        <a href="{% url 'movie_rating:visitor-update' pk=visitor.id %}" class="btn btn-secondary link-to-page">
+          Update
+        </a>
+
+      {% endif %}
+    </h1>
+    <p>First name: {% if visitor.first_name %}{{ visitor.first_name }}{% else %}Not entered{% endif %}</p>
+    <p>Last name: {% if visitor.last_name %}{{ visitor.last_name }}{% else %}Not entered{% endif %}</p>
+    <p>Email: {% if visitor.email %}{{ visitor.email }}{% else %}Not entered{% endif %}</p>
+  </div>
+  <h1 class="align-center display-4">
+    Wishlist
+  </h1>
+  <hr>
+  <ul class="wishlist">
+    {% for movie in visitor.wishlist.all %}
+      <div class="model-show">
+        <div class="col-sm-3">
+          <img class="photo" src="../../movie_rating_platform/static/images/poster.jpg" alt="Poster">
+        </div>
+        <div class="col-sm-9">
+          <a class="model-instance" href="{% url 'movie_rating:movie-detail' pk=movie.pk %}"><strong>{{ movie }}</strong></a>
+          {% if movie.description|length > 100 %}
+            <p class="model-text">{{ movie.description|slice:":100" }}...</p>
+          {% else %}
+            <p class="model-text">{{ movie.description }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </ul>
+{% endblock %}
