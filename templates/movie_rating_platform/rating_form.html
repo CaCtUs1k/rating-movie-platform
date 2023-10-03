@@ -9,9 +9,9 @@
 
     <input type="submit" value="Submit" class="btn btn-primary">
     {% if pk %}
-    <a class="btn btn-primary" href="{% url 'movie_rating:movie-detail' pk=pk %}">Cancel</a>
+      <a class="btn btn-primary" href="{% url 'movie_rating:movie-detail' pk=pk %}">Cancel</a>
     {% else %}
-    <a class="btn btn-primary" href="{% url 'movie_rating:movie-detail' pk=rating.id %}">Cancel</a>
+      <a class="btn btn-primary" href="{% url 'movie_rating:movie-detail' pk=rating.id %}">Cancel</a>
     {% endif %}
   </form>
 {% endblock %}

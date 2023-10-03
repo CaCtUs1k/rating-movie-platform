@@ -22,19 +22,17 @@
   </div>
   <div class="centered visitor-list">
     {% if visitor_list %}
-    {% for visitor in visitor_list %}
-      <div class="visitor-card">
-        <div class="col-sm-2 visitor-avatar">
-
+      {% for visitor in visitor_list %}
+        <div class="visitor-card">
+          <div class="col-sm-2 visitor-avatar"></div>
+          <div>
+            <p><a class="username font-weight-bold" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %} (Me){% endif %}</a></p>
+            <p class="real-name">Real Name: {{ visitor.first_name }} | Wishlist length - {{ visitor.wishlist.count }}</p>
+          </div>
         </div>
-        <div>
-        <p><a class="username font-weight-bold" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %} (Me){% endif %}</a></p>
-        <p class="real-name">Real Name: {{ visitor.first_name }} | Wishlist length - {{ visitor.wishlist.count }}</p>
-        </div>
-      </div>
-    {% endfor %}
-  {% else %}
+      {% endfor %}
+    {% else %}
     <p>There are no visitors in the service!</p>
-  {% endif %}
+    {% endif %}
   </div>
 {% endblock %}
