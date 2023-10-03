@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="centered">
+    <h1>{{ object|yesno:"Update,Create" }} Movie</h1>
+    <form style="margin-bottom: 20px" action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      <input type="submit" value="Submit" class="btn btn-primary">
+      <a class="btn btn-primary" href="{% url 'movie_rating:movie-list' %}">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
