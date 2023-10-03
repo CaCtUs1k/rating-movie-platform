@@ -2,21 +2,39 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Visitor List
-    <a href="{% url 'movie_rating:visitor-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit" value="🔍">
-  </form>
-  {% if visitor_list %}
+  <div style="margin-top: 10px " class="justify-content-between title-and-search">
+    <div>
+      <h1>
+        Visitors
+        {% if user.is_superuser %}
+        <a href="{% url 'movie_rating:visitor-create' %}" class="btn btn-primary link-to-page">
+          Create
+        </a>
+        {% endif %}
+      </h1>
+    </div>
+    <div>
+      <form action="" method="get" class="form-inline">
+        {{ search_form|crispy }}
+        <input class="btn btn-secondary" type="submit" value="🔍">
+      </form>
+    </div>
+  </div>
+  <div class="centered visitor-list">
+    {% if visitor_list %}
     {% for visitor in visitor_list %}
-      <p><a class="username" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %} (Me){% endif %}</a></p>
+      <div class="visitor-card">
+        <div class="col-sm-2 visitor-avatar">
+
+        </div>
+        <div>
+        <p><a class="username font-weight-bold" href="{{ visitor.get_absolute_url }}">{{ visitor.username }}{% if user == visitor %} (Me){% endif %}</a></p>
+        <p class="real-name">Real Name: {{ visitor.first_name }} | Wishlist length - {{ visitor.wishlist.count }}</p>
+        </div>
+      </div>
     {% endfor %}
   {% else %}
     <p>There are no visitors in the service!</p>
   {% endif %}
+  </div>
 {% endblock %}

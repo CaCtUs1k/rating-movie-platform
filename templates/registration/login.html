@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-
+<div class="centered">
 {% if form.errors %}
   <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -13,12 +13,12 @@
   <p>Please login to see this page.</p>
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form style="margin-bottom: 20px" method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form|crispy }}
 
   <input type="submit" value="Login" class="btn btn-primary" />
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
+</div>
 {% endblock %}

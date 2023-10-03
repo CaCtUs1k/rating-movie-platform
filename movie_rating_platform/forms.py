@@ -9,9 +9,7 @@ class MovieSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={"placeholder": "Search by title"}
-        )
+        widget=forms.TextInput(attrs={"placeholder": "Search by title"}),
     )
 
 
@@ -20,9 +18,7 @@ class VisitorSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={"placeholder": "Search by username"}
-        )
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"}),
     )
 
 
@@ -32,18 +28,14 @@ class VisitorCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "first_name",
             "last_name",
-            "wishlist"
+            "wishlist",
         )
 
 
 class VisitorUpdateForm(forms.ModelForm):
     class Meta:
         model = Visitor
-        fields = (
-            "first_name",
-            "last_name",
-            "username"
-        )
+        fields = ("first_name", "last_name", "username")
 
 
 class CreateOrUpdateRatingForm(forms.ModelForm):
@@ -52,8 +44,12 @@ class CreateOrUpdateRatingForm(forms.ModelForm):
         fields = ["value", "description"]
 
         widgets = {
-            "value": forms.TextInput(attrs={"placeholder": "Enter value from 0 to 10"}),
-            "description": forms.TextInput(attrs={"placeholder": "Enter description"}),
+            "value": forms.TextInput(
+                attrs={"placeholder": "Enter value from 0 to 10"}
+            ),
+            "description": forms.TextInput(
+                attrs={"placeholder": "Enter description"}
+            ),
         }
 
         labels = {

@@ -1,22 +1,56 @@
 {% extends "base.html" %}
+{% load query_transform %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Movie List
-    <a href="{% url 'movie_rating:movie-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit" value="🔍">
-  </form>
+  <div class="genres">
+    <h1>Genres</h1>
+    <ul class="genre-list">
+      {% for genre in genres %}
+        <li>
+          <a href="?genre={{ genre.id }}{% if request.GET.title %}&title={{ request.GET.title }}{% endif %}{% if request.GET.page %}&page=1{% endif %}"
+             class="genre-button rounded">{{ genre.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="justify-content-between title-and-search">
+    <h1>
+      Movies
+      <a href="{% url 'movie_rating:movie-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+      <a href="{% url 'movie_rating:movie-list' %}" type="submit" class="btn btn-secondary">Clear filter</a>
+    </h1>
+    <form action="" method="get" class="form-inline">
+      {{ search_form|crispy }}
+      <input class="btn btn-secondary" type="submit" value="🔍">
+    </form>
+  </div>
   {% if movie_list %}
     {% for movie in movie_list %}
-      <p><a href="{% url 'movie_rating:movie-detail' pk=movie.pk %}">{{ movie.pk }} </a>: {{ movie }}</p>
+      <div class="model-show">
+        <div class="col-sm-3">
+          <img class="photo" src="../../movie_rating_platform/static/images/poster.jpg" alt="Poster">
+        </div>
+        <div class="col-sm-9">
+          <a class="model-instance" href="{% url 'movie_rating:movie-detail' pk=movie.pk %}"><strong>{{ movie }}</strong></a>
+          {% if movie.description|length > 100 %}
+            <p class="model-text">{{ movie.description|slice:":100" }}...</p>
+          {% else %}
+            <p class="model-text">{{ movie.description }}</p>
+          {% endif %}
+        </div>
+      </div>
     {% endfor %}
   {% else %}
     <p>There are no movies in the service!</p>
   {% endif %}
 {% endblock %}
+<script>$(document).ready(function(){
+  $('.genre-button').click(function(){
+    $('.genre-button').removeClass('active');
+    $(this).addClass('active');
+  });
+});</script>

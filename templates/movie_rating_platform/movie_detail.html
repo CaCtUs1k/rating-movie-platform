@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <div class="centered">
   <h1>
   Movie
+  {% if user.is_superuser %}
   <a href="{% url 'movie_rating:movie-delete' pk=movie.id %}" class="btn btn-danger link-to-page">
     Delete
   </a>
@@ -10,6 +12,7 @@
   <a href="{% url 'movie_rating:movie-update' pk=movie.id %}" class="btn btn-secondary link-to-page">
     Update
   </a>
+  {% endif %}
 
   {% if movie in user.wishlist.all %}
     <a href="{% url 'movie_rating:toggle_wishlist' pk=movie.pk %}" class="btn btn-primary link-to-page">Remove from wishlist</a>
@@ -17,17 +20,17 @@
     <a href="{% url 'movie_rating:toggle_wishlist' pk=movie.pk %}" class="btn btn-warning link-to-page">To wishlist</a>
   {% endif %}
   </h1>
-  <p>{{ movie }}</p>
-  <h3>Description</h3>
+  <p class="col-sm-6">{{ movie }}</p>
+  <h3 style="font-size: 40px;">Description</h3>
   <p class="col-sm-6">{{ movie.description }}</p>
-  <h3>
+  <h3 class="display-4">
     Ratings
   </h3>
   {% for rating in movie.ratings.all %}
     <hr>
-    <div class="col-sm-5">
+    <div class="col-sm-6">
       <p>
-        <a href="{% url 'movie_rating:visitor-detail' pk=rating.sender.pk %}">{{ rating.sender }}</a>
+        <a class="username font-weight-bold" href="{% url 'movie_rating:visitor-detail' pk=rating.sender.pk %}">{{ rating.sender }}</a>
         {% if rating.sender == user %}
           <a class="btn btn-primary" href="{% url 'movie_rating:rating-update' movie_pk=movie.pk pk=rating.pk %}">Update</a>
           <a class="btn btn-warning" href="{% url 'movie_rating:rating-delete' movie_pk=movie.pk pk=rating.pk %}">Delete</a>
@@ -41,17 +44,18 @@
         {% endif %}
       {% endfor %}
       <br>
-      {{ rating }}
+      <p>{{ rating }}</p>
     </div>
   {% endfor %}
   <hr>
   {% if user.is_authenticated %}
     {% if not user_comment %}
-        <a class="btn btn-primary" href="{% url 'movie_rating:rating-create' pk=movie.pk %}">Add Rating</a>
+        <a style="margin-bottom: 20px;" class="btn btn-primary" href="{% url 'movie_rating:rating-create' pk=movie.pk %}">Add Rating</a>
     {% else %}
         <p>You have already left a rating for this movie.</p>
     {% endif %}
   {% else %}
     <p>Please log in to leave a rating.</p>
   {% endif %}
+  </div>
 {% endblock %}
