@@ -12,7 +12,7 @@ from movie_rating_platform.forms import (
     VisitorCreationForm,
     VisitorSearchForm,
     VisitorUpdateForm,
-    CreateOrUpdateRatingForm,
+    CreateOrUpdateRatingForm, UserRegistrationForm, AvatarForm,
 )
 from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
@@ -170,3 +170,29 @@ def toggle_assign_to_movie(request, pk):
     else:
         visitor.wishlist.add(pk)
     return HttpResponseRedirect(reverse("movie_rating:movie-detail", args=[pk]))
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            return render(request, 'registration/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'user_form': user_form})
+
+def change_avatar(request, pk):
+    if request.method == 'POST':
+        form = AvatarForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('movie_rating:user-detail', pk=pk)
+    else:
+        form = AvatarForm(instance=request.user)
+    return render(request, 'movie_rating_platform/avatar_change.html', {'form': form})

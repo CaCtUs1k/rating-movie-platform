@@ -36,6 +36,12 @@ a.navbar-brand {
 
 
 /* body */
+
+.background {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     position: relative;
     margin-bottom: 300px;
@@ -58,7 +64,9 @@ body {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    background-color: aliceblue;
+    background-color: #eaeaea;
+    min-height: 500px;
+    margin-top: 30px;
 }
 /* Footer */
 
@@ -268,6 +276,11 @@ input.btn-primary:hover {
     border: 3px solid black;
     margin: 10px 0;
 }
+
+.visitor-card .visitor-avatar {
+    padding-left: 0;
+}
+
 .visitor-avatar {
     display: block;
     height: 150px;
