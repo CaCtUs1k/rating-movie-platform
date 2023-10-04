@@ -1,34 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <div class="centered">
-    <h1>
-      {{ visitor.username }} profile {% if user == visitor %}(You){% endif %}
-      {% if user == visitor %}
+  <div style="display: flex" class="centered">
+    <div class="profile-photo col-sm-4" style="margin: 20px 0;">
+      <img style="height: 100%;" src="{% static 'avatars/nibbler.jpg' %}">
+{#      <img src="{{ visitor.avatar.url }}" alt="{{ visitor.username }} Avatar" width="120" height="120">#}
+    </div>
+    <div>
+      <h1>
+        {{ visitor.username }} profile
+        {% if user == visitor %}
+          (You) <br>
+          <a href="{% url 'movie_rating:avatar-change' pk=visitor.id %}" class="btn btn-secondary link-to-page">
+          Change avatar
+          </a>
+        {% endif %}
+        {% if user == visitor %}
 
-        <a href="{% url 'movie_rating:visitor-delete' pk=visitor.id %}" class="btn btn-danger link-to-page">
-          Delete
-        </a>
+          <a href="{% url 'movie_rating:visitor-update' pk=visitor.id %}" class="btn btn-secondary link-to-page">
+            Update
+          </a>
 
-        <a href="{% url 'movie_rating:visitor-update' pk=visitor.id %}" class="btn btn-secondary link-to-page">
-          Update
-        </a>
+          <a href="{% url 'movie_rating:visitor-delete' pk=visitor.id %}" class="btn btn-danger link-to-page">
+            Delete
+          </a>
 
-      {% endif %}
-    </h1>
-    <p>First name: {% if visitor.first_name %}{{ visitor.first_name }}{% else %}Not entered{% endif %}</p>
-    <p>Last name: {% if visitor.last_name %}{{ visitor.last_name }}{% else %}Not entered{% endif %}</p>
-    <p>Email: {% if visitor.email %}{{ visitor.email }}{% else %}Not entered{% endif %}</p>
+        {% endif %}
+      </h1>
+      <p>First name: {% if visitor.first_name %}{{ visitor.first_name }}{% else %}Not entered{% endif %}</p>
+      <p>Last name: {% if visitor.last_name %}{{ visitor.last_name }}{% else %}Not entered{% endif %}</p>
+      <p>Email: {% if visitor.email %}{{ visitor.email }}{% else %}Not entered{% endif %}</p>
+    </div>
   </div>
+  <hr>
   <h1 class="align-center display-4">
     Wishlist
   </h1>
-  <hr>
   <ul class="wishlist">
     {% for movie in visitor.wishlist.all %}
       <div class="model-show">
-        <div class="col-sm-3">
-          <img class="photo" src="../../movie_rating_platform/static/images/poster.jpg" alt="Poster">
+        <div class="col-sm-3 pl-0">
+          <img style="border-radius: 20px" class="photo" src="{% static 'images/poster.jpg' %}" alt="Poster">
         </div>
         <div class="col-sm-9">
           <a class="model-instance" href="{% url 'movie_rating:movie-detail' pk=movie.pk %}"><strong>{{ movie }}</strong></a>

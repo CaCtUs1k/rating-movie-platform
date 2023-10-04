@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <p>Сoming soon...</p>
+  <a class="btn btn-secondary" href="{% url 'movie_rating:visitor-detail' pk=user.pk %}">Return</a>
+{% endblock %}

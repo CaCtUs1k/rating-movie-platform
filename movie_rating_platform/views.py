@@ -187,12 +187,18 @@ def register(request):
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form})
 
+
 def change_avatar(request, pk):
+    visitor = Visitor.objects.get(pk=pk)
+    avatars = ['avatars/black.jpg', 'avatars/nibbler.jpg']
+
     if request.method == 'POST':
-        form = AvatarForm(request.POST, request.FILES, instance=request.user)
+        form = AvatarForm(request.POST, instance=visitor)
         if form.is_valid():
             form.save()
-            return redirect('movie_rating:user-detail', pk=pk)
+            return redirect('movie_rating:visitor-detail', pk=pk)
     else:
-        form = AvatarForm(instance=request.user)
-    return render(request, 'movie_rating_platform/avatar_change.html', {'form': form})
+        form = AvatarForm(instance=visitor)
+
+    context = {'form': form, 'avatars': avatars}
+    return render(request, 'movie_rating_platform/avatar_change.html', context)
