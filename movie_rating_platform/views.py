@@ -100,7 +100,7 @@ class VisitorListView(LoginRequiredMixin, generic.ListView):
 
 class VisitorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Visitor
-    queryset = Visitor.objects.all().prefetch_related("wishlist")
+    queryset = Visitor.objects.prefetch_related("wishlist")
 
 
 class VisitorCreateView(LoginRequiredMixin, generic.CreateView):
@@ -125,10 +125,10 @@ def movie_detail_view(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     max_value = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     movie.ratings.select_related("sender")
-    context = {"movie": movie, "max_value": max_value}
-    return render(
-        request, "movie_rating_platform/movie_detail.html", context=context
-    )
+    user = request.user
+    user_comment = Rating.objects.filter(sender=user, movie=movie).exists()
+    context = {"movie": movie, "max_value": max_value, "user_comment": user_comment}
+    return render(request, "movie_rating_platform/movie_detail.html", context=context)
 
 
 @login_required
