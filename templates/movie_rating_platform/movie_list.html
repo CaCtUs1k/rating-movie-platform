@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load query_transform %}
 {% load crispy_forms_filters %}
 
@@ -31,8 +32,8 @@
   {% if movie_list %}
     {% for movie in movie_list %}
       <div class="model-show">
-        <div class="col-sm-3">
-          <img class="photo" src="../../movie_rating_platform/static/images/poster.jpg" alt="Poster">
+        <div class="pl-0">
+          <img style="border-radius: 20px" class="photo" src="{% static 'images/poster.jpg' %}" alt="Poster">
         </div>
         <div class="col-sm-9">
           <a class="model-instance" href="{% url 'movie_rating:movie-detail' pk=movie.pk %}"><strong>{{ movie }}</strong></a>

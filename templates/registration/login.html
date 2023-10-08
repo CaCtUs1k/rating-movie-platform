@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <div class="centered">
+  <div style="margin-top: 70px" class="centered">
     {% if form.errors %}
       <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -19,6 +19,7 @@
 
       <input type="submit" value="Login" class="btn btn-primary" />
       <input type="hidden" name="next" value="{{ next }}" />
+      <a style="float: right" class="btn btn-secondary" href="{% url 'movie_rating:register' %}">Register</a>
     </form>
   </div>
 {% endblock %}
