@@ -12,7 +12,9 @@ from movie_rating_platform.forms import (
     VisitorCreationForm,
     VisitorSearchForm,
     VisitorUpdateForm,
-    CreateOrUpdateRatingForm, UserRegistrationForm, AvatarForm,
+    CreateOrUpdateRatingForm,
+    UserRegistrationForm,
+    AvatarForm,
 )
 from movie_rating_platform.models import Movie, Rating, Genre, Visitor
 
@@ -127,8 +129,14 @@ def movie_detail_view(request, pk):
     movie.ratings.select_related("sender")
     user = request.user
     user_comment = Rating.objects.filter(sender=user, movie=movie).exists()
-    context = {"movie": movie, "max_value": max_value, "user_comment": user_comment}
-    return render(request, "movie_rating_platform/movie_detail.html", context=context)
+    context = {
+        "movie": movie,
+        "max_value": max_value,
+        "user_comment": user_comment,
+    }
+    return render(
+        request, "movie_rating_platform/movie_detail.html", context=context
+    )
 
 
 @login_required
@@ -169,36 +177,44 @@ def toggle_assign_to_movie(request, pk):
         visitor.wishlist.remove(pk)
     else:
         visitor.wishlist.add(pk)
-    return HttpResponseRedirect(reverse("movie_rating:movie-detail", args=[pk]))
+    return HttpResponseRedirect(
+        reverse("movie_rating:movie-detail", args=[pk])
+    )
 
 
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
             # Set the chosen password
-            new_user.set_password(user_form.cleaned_data['password'])
+            new_user.set_password(user_form.cleaned_data["password"])
             # Save the User object
             new_user.save()
-            return render(request, 'registration/register_done.html', {'new_user': new_user})
+            return render(
+                request,
+                "registration/register_done.html",
+                {"new_user": new_user},
+            )
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'registration/register.html', {'user_form': user_form})
+    return render(
+        request, "registration/register.html", {"user_form": user_form}
+    )
 
 
 def change_avatar(request, pk):
     visitor = Visitor.objects.get(pk=pk)
-    avatars = ['avatars/black.jpg', 'avatars/nibbler.jpg']
+    avatars = ["avatars/black.jpg", "avatars/nibbler.jpg"]
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = AvatarForm(request.POST, instance=visitor)
         if form.is_valid():
             form.save()
-            return redirect('movie_rating:visitor-detail', pk=pk)
+            return redirect("movie_rating:visitor-detail", pk=pk)
     else:
         form = AvatarForm(instance=visitor)
 
-    context = {'form': form, 'avatars': avatars}
-    return render(request, 'movie_rating_platform/avatar_change.html', context)
+    context = {"form": form, "avatars": avatars}
+    return render(request, "movie_rating_platform/avatar_change.html", context)

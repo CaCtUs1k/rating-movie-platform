@@ -12,6 +12,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="visitor",
             name="avatar",
-            field=models.ImageField(default="avatars/black.jpg", upload_to="avatars/"),
+            field=models.ImageField(
+                default="avatars/black.jpg", upload_to="avatars/"
+            ),
         ),
     ]

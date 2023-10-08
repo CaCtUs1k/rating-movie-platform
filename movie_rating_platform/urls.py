@@ -16,7 +16,8 @@ from movie_rating_platform.views import (
     RatingUpdateView,
     RatingDeleteView,
     toggle_assign_to_movie,
-    register, change_avatar,
+    register,
+    change_avatar,
 )
 
 app_name = "movie_rating"
@@ -59,7 +60,9 @@ urlpatterns = [
     ),
     path("users/", VisitorListView.as_view(), name="visitor-list"),
     path("users/create/", VisitorCreateView.as_view(), name="visitor-create"),
-    path("users/<int:pk>/", VisitorDetailView.as_view(), name="visitor-detail"),
+    path(
+        "users/<int:pk>/", VisitorDetailView.as_view(), name="visitor-detail"
+    ),
     path("users/<int:pk>/update_avatar", change_avatar, name="avatar-change"),
     path(
         "users/<int:pk>/update/",
@@ -71,5 +74,4 @@ urlpatterns = [
         VisitorDeleteView.as_view(),
         name="visitor-delete",
     ),
-
 ]

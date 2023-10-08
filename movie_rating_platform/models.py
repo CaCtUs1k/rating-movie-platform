@@ -51,7 +51,9 @@ class Visitor(AbstractUser):
         Movie,
         "users",
     )
-    avatar = models.ImageField(upload_to='avatars/', default='avatars/black.jpg')
+    avatar = models.ImageField(
+        upload_to="avatars/", default="avatars/black.jpg"
+    )
 
     def get_absolute_url(self):
         return reverse("movie_rating:visitor-detail", kwargs={"pk": self.pk})
