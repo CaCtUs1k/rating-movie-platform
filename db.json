@@ -1,0 +1,430 @@
+[
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 1,
+    "fields":
+    {"name": "drama"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 2,
+    "fields":
+    {"name": "comedy"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 3,
+    "fields":
+    {"name": "science fiction"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 4,
+    "fields":
+    {"name": "horror"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 5,
+    "fields": {"name": "action"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 6,
+    "fields":
+    {"name": "adventure"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 7,
+    "fields": {"name": "fantasy"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 8,
+    "fields":
+    {"name": "romance"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 9,
+    "fields": {"name": "war"}
+  },
+  {"model": "movie_rating_platform.genre",
+    "pk": 10,
+    "fields":
+    {"name": "historical"}
+  },
+  {"model": "movie_rating_platform.genre",
+    "pk": 11,
+    "fields":
+    {"name": "animation"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 12,
+    "fields":
+    {"name": "thriller"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 13,
+    "fields":
+    {"name": "mystery"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 14,
+    "fields":
+    {"name": "sci-fi"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 15,
+    "fields":
+    {"name": "noir"}
+  },
+  {
+    "model": "movie_rating_platform.genre",
+    "pk": 16,
+    "fields":
+    {"name": "biography"}
+  },
+  {"model": "movie_rating_platform.genre",
+    "pk": 17,
+    "fields":
+    {"name": "post-apocalyptic"}
+   },
+  {"model": "movie_rating_platform.genre",
+    "pk": 18,
+    "fields": {"name": "crime"}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 1,
+    "fields":
+    {
+      "title": "Forrest Gump",
+      "description": "This dramedy tells the story of Forrest Gump, a man with low intelligence, who unexpectedly becomes a key figure in various significant events in U.S. history.",
+      "release_year": 1994,
+      "poster_link": null,
+      "genres": [2, 1, 8]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 2,
+    "fields":
+    {
+      "title": "Schindler'S List",
+      "description": "\"Schindler's List\" is a haunting portrayal of Oskar Schindler, a German businessman who saved the lives of over a thousand Polish-Jewish refugees during the Holocaust.",
+      "release_year": 1993,
+      "poster_link": null,
+      "genres": [16, 1, 10]}},
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 3,
+    "fields":
+    {
+      "title": "The Hangover",
+      "description": "\"Superbad\" is a hilarious coming-of-age comedy about two high school friends on a quest to buy alcohol for a party, leading them on a wild and unpredictable adventure.",
+      "release_year": 2009,
+      "poster_link": null,
+      "genres": [2]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 4,
+    "fields":
+    {
+      "title": "Inception",
+      "description": "\"Inception\" is a mind-bending thriller that delves into the world of shared dreaming, as a team of specialists attempts to implant an idea into a target's subconscious.",
+      "release_year": 2010,
+      "poster_link": null,
+      "genres": [5, 3, 12]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 5,
+    "fields":
+    {
+      "title": "Blade Runner",
+      "description": "\"Blade Runner\" is a dystopian sci-fi noir, set in a future where specialized detectives, known as Blade Runners, are tasked with hunting down rogue artificial beings.",
+      "release_year": 1982,
+      "poster_link": null,
+      "genres": [15, 3, 12]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 6,
+    "fields":
+    {
+      "title": "The Exorcist",
+      "description": "\"The Exorcist\" is a terrifying horror film about the possession of a young girl named Regan, and the attempts to rid her of the malevolent force within her.",
+      "release_year": 1973,
+      "poster_link": null,
+      "genres": [4]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 7,
+    "fields":
+    {
+      "title": "A Nightmare on Elm Street",
+      "description": "\"A Nightmare on Elm Street\" is a classic horror film introducing Freddy Krueger, a vengeful spirit haunting the dreams of teenagers, leading to deadly consequences in reality.",
+      "release_year": 1984,
+      "poster_link": null,
+      "genres": [4]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 8,
+    "fields":
+    {
+      "title": "Die Hard",
+      "description": "\"Die Hard\" follows NYPD officer John McClane as he battles terrorists who have taken hostages in a Los Angeles skyscraper during a Christmas party.",
+      "release_year": 1988,
+      "poster_link": null,
+      "genres": [5]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 9,
+    "fields":
+    {
+      "title": "Mad Max: Fury Road",
+      "description": "\"Mad Max: Fury Road\" is a high-octane action film set in a post-apocalyptic wasteland, where Max joins forces with Furiosa to escape the tyrannical Immortan Joe.",
+      "release_year": 2015,
+      "poster_link": null,
+      "genres": [5, 17]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 10,
+    "fields":
+    {
+      "title": "Indiana Jones and the Raiders of the Lost Ark",
+      "description": "Renowned archaeologist Indiana Jones embarks on a quest to find the mythical Ark of the Covenant before the Nazis do, facing numerous challenges and adversaries along the way.",
+      "release_year": 1981,
+      "poster_link": null,
+      "genres": [6]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 11,
+    "fields":
+    {
+      "title": "The Lord of the Rings: the Fellowship of the Ring",
+      "description": "Frodo Baggins and a diverse fellowship of companions set out on an epic journey to destroy the One Ring and prevent its malevolent power from falling into the wrong hands.",
+      "release_year": 2001,
+      "poster_link": null,
+      "genres": [6, 7]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 12,
+    "fields":
+    {
+      "title": "Harry Potter and the Sorcerer'S Stone",
+      "description": "Young Harry Potter discovers his true identity as a wizard and embarks on his first year at Hogwarts School of Witchcraft and Wizardry, uncovering mysteries and forging friendships.",
+      "release_year": 2001,
+      "poster_link": null,
+      "genres": [7]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 13,
+    "fields":
+    {
+      "title": "Pan'S Labyrinth",
+      "description": "Set against the backdrop of post-Civil War Spain, a young girl named Ofelia discovers a mythical labyrinth and encounters fantastical creatures, offering her a refuge from harsh reality.",
+      "release_year": 2006,
+      "poster_link": null,
+      "genres": [1, 7, 9]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 14,
+    "fields":
+    {
+      "title": "The Notebook",
+      "description": "\"The Notebook\" follows the enduring love story of Noah and Allie, whose passionate romance faces trials and tribulations, ultimately leaving an indelible mark on both their lives.",
+      "release_year": 2004,
+      "poster_link": null,
+      "genres": [1, 8]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 15,
+    "fields":
+    {
+      "title": "Pride and Prejudice",
+      "description": "Based on Jane Austen's classic novel, \"Pride and Prejudice\" revolves around the spirited Elizabeth Bennet and the enigmatic Mr. Darcy, as their complex relationship unfolds amidst societal expectations.",
+      "release_year": 2005,
+      "poster_link": null,
+      "genres": [1, 8]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 16,
+    "fields":
+    {
+      "title": "Saving Private Ryan",
+      "description": "During World War II, Captain Miller leads a group of soldiers on a perilous mission to locate and bring home Private James Ryan, whose three brothers have been killed in action.",
+      "release_year": 1998,
+      "poster_link": null,
+      "genres": [1, 10, 9]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 17,
+    "fields":
+    {
+      "title": "Full Metal Jacket",
+      "description": "Stanley Kubrick's \"Full Metal Jacket\" offers a stark portrayal of the Vietnam War, exploring the dehumanizing effects of combat on a group of U.S. Marines.",
+      "release_year": 1987,
+      "poster_link": null,
+      "genres": [1, 9]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 18,
+    "fields":
+    {
+      "title": "Braveheart",
+      "description": "\"Braveheart\" is the epic tale of William Wallace, a Scottish rebel who leads a revolt against English oppression, becoming an iconic figure in Scotland's fight for freedom.",
+      "release_year": 1995,
+      "poster_link": null,
+      "genres": [16, 1, 10]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 19,
+    "fields":
+    {
+      "title": "Gladiator",
+      "description": "Maximus, a Roman general betrayed by a power-hungry emperor, seeks vengeance as a gladiator in the brutal arenas of ancient Rome, ultimately challenging the empire's corruption.",
+      "release_year": 2000,
+      "poster_link": null,
+      "genres": [5, 1, 10]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 20,
+    "fields":
+    {
+      "title": "Toy Story",
+      "description": "\"Toy Story\" introduces a world where toys come to life when their owner isn't looking. Woody, Buzz Lightyear, and their toy companions embark on a quest to return home.",
+      "release_year": 1995,
+      "poster_link": null,
+      "genres": [6, 11, 2]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 21,
+    "fields":
+    {
+      "title": "Finding Nemo",
+      "description": "Marlin, a clownfish, embarks on a journey across the ocean to find his son Nemo, who has been captured by a scuba diver and placed in a fish tank.",
+      "release_year": 2003,
+      "poster_link": null,
+      "genres": [6, 11, 2]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 22,
+    "fields":
+    {
+      "title": "Seven",
+      "description": "Detectives Somerset and Mills investigate a series of gruesome murders inspired by the seven deadly sins, leading them into a harrowing game of cat-and-mouse with a sadistic killer.",
+      "release_year": 1995,
+      "poster_link": null,
+      "genres": [13, 12]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 23,
+    "fields":
+    {
+      "title": "Silence of the Lambs",
+      "description": "FBI trainee Clarice Starling seeks the help of incarcerated cannibalistic serial killer Dr. Hannibal Lecter to catch another serial killer known as \"Buffalo Bill.\"",
+      "release_year": 1991,
+      "poster_link": null,
+      "genres": [18, 4, 12]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 24,
+    "fields":
+    {
+      "title": "Sherlock Holmes",
+      "description": "The brilliant detective Sherlock Holmes and his loyal friend Dr. John Watson are pitted against the sinister Lord Blackwood, whose dark schemes threaten all of London.",
+      "release_year": 2009,
+      "poster_link": null,
+      "genres": [5, 6, 13]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 25,
+    "fields":
+  {
+    "title": "Gone Girl",
+    "description": "When his wife Amy goes missing, Nick Dunne becomes the prime suspect. As the media frenzy ensues, dark secrets and a web of deception unfold in this gripping psychological thriller.",
+    "release_year": 2014,
+    "poster_link": null,
+    "genres": [1, 13, 12]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 26,
+    "fields":
+    {
+      "title": "Back to the Future",
+      "description": "Marty McFly, a teenager, is accidentally sent 30 years into the past by a time-traveling DeLorean. He must ensure his parents' romance while finding a way back to the future.",
+      "release_year": 1985,
+      "poster_link": null,
+      "genres": [6, 2, 14]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 27,
+    "fields":
+    {
+      "title": "Guardians of the Galaxy",
+      "description": "A group of unlikely heroes, including Star-Lord, Rocket, Groot, Gamora, and Drax, join forces to save the galaxy from the threat of the powerful Infinity Stone.",
+      "release_year": 2014,
+      "poster_link": null,
+      "genres": [5, 2, 14]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 28,
+    "fields":
+    {
+      "title": "Double Indemnity",
+      "description": "Walter Neff, an insurance salesman, becomes entangled in a dangerous plot with the seductive Phyllis Dietrichson, leading to a web of deceit and murder.",
+      "release_year": 1944,
+      "poster_link": null,
+      "genres": [18, 1, 15]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 29,
+    "fields":
+    {
+      "title": "Chinatown",
+      "description": "Private detective J.J. Gittes is drawn into a complex web of corruption, deceit, and murder while investigating a case involving water rights in 1930s Los Angeles.",
+      "release_year": 1974,
+      "poster_link": null,
+      "genres": [1, 13, 15]}
+  },
+  {
+    "model": "movie_rating_platform.movie",
+    "pk": 30,
+    "fields":
+    {
+      "title": "Toy Story 3",
+      "description": "Return to the screens of the classic series, the same old characters, but in new adventures!",
+      "release_year": 2010,
+      "poster_link": null,
+      "genres": [6, 11, 2]}
+  }]
