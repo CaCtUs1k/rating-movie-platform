@@ -34,17 +34,17 @@ urlpatterns = [
         name="toggle_wishlist",
     ),
     path(
-        "movies/<int:movie_pk>/rating/<int:pk>/update",
+        "movies/<int:movie_pk>/rating/<int:pk>/update/",
         RatingUpdateView.as_view(),
         name="rating-update",
     ),
     path(
-        "movies/<int:movie_pk>/rating/<int:pk>/delete",
+        "movies/<int:movie_pk>/rating/<int:pk>/delete/",
         RatingDeleteView.as_view(),
         name="rating-delete",
     ),
     path(
-        "movies/<int:pk>/rating/create",
+        "movies/<int:pk>/rating/create/",
         create_rating_view,
         name="rating-create",
     ),
@@ -63,7 +63,7 @@ urlpatterns = [
     path(
         "users/<int:pk>/", VisitorDetailView.as_view(), name="visitor-detail"
     ),
-    path("users/<int:pk>/update_avatar", change_avatar, name="avatar-change"),
+    path("users/<int:pk>/update_avatar/", change_avatar, name="avatar-change"),
     path(
         "users/<int:pk>/update/",
         VisitorUpdateView.as_view(),
