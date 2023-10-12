@@ -1,0 +1,290 @@
+[
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 1,
+        "fields": {
+            "name": "Action"
+        }
+    },
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 2,
+        "fields": {
+            "name": "Comedy"
+        }
+    },
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 3,
+        "fields": {
+            "name": "Drama"
+        }
+    },
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 4,
+        "fields": {
+            "name": "Sci-Fi"
+        }
+    },
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 5,
+        "fields": {
+            "name": "Romance"
+        }
+    },
+    {
+        "model": "movie_rating_platform.genre",
+        "pk": 6,
+        "fields": {
+            "name": "Thriller"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 1,
+        "fields": {
+            "title": "Inception",
+            "description": "A mind-bending thriller.",
+            "release_year": 2010,
+            "poster_link": "inception_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 2,
+        "fields": {
+            "title": "The Shawshank Redemption",
+            "description": "Two imprisoned men bond over a number of years.",
+            "release_year": 1994,
+            "poster_link": "shawshank_redemption_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 3,
+        "fields": {
+            "title": "The Godfather",
+            "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+            "release_year": 1972,
+            "poster_link": "godfather_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 4,
+        "fields": {
+            "title": "Pulp Fiction",
+            "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+            "release_year": 1994,
+            "poster_link": "pulp_fiction_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 5,
+        "fields": {
+            "title": "The Dark Knight",
+            "description": "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+            "release_year": 2008,
+            "poster_link": "dark_knight_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 6,
+        "fields": {
+            "title": "Forrest Gump",
+            "description": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
+            "release_year": 1994,
+            "poster_link": "forrest_gump_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 7,
+        "fields": {
+            "title": "Titanic",
+            "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+            "release_year": 1997,
+            "poster_link": "titanic_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 8,
+        "fields": {
+            "title": "Inglourious Basterds",
+            "description": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.",
+            "release_year": 2009,
+            "poster_link": "inglourious_basterds_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 9,
+        "fields": {
+            "title": "The Matrix",
+            "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+            "release_year": 1999,
+            "poster_link": "matrix_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.movie",
+        "pk": 10,
+        "fields": {
+            "title": "The Lord of the Rings: The Fellowship of the Ring",
+            "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+            "release_year": 2001,
+            "poster_link": "lotr_fellowship_poster.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.visitor",
+        "pk": 1,
+        "fields": {
+            "username": "Test_user1",
+            "password": "pbkdf2_sha256$260000$zjPtBtrwaTae$T6wyWpS4TdZXEZ/Fu1SzFJNl6dQ=",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john@example.com",
+            "avatar": "avatars/john_doe.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.visitor",
+        "pk": 2,
+        "fields": {
+            "username": "Test_user2",
+            "password": "pbkdf2_sha256$260000$zjPtBtrwaTae$T6wyWpS4TdZXEZ/Fu1SzFJNl6dQ=",
+            "first_name": "Jane",
+            "last_name": "Doe",
+            "email": "jane@example.com",
+            "avatar": "avatars/jane_doe.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.visitor",
+        "pk": 3,
+        "fields": {
+            "username": "Test_user_for_site",
+            "password": "pbkdf2_sha256$600000$U0FAxWWiy0ASuPBMYQclm6$GUhkw6dsUU1uaod0Jp9aSAoQ/VpXTvEblcCtiUC/ays=",
+            "first_name": "Test",
+            "last_name": "User",
+            "email": "test@example.com",
+            "avatar": "avatars/test_user.jpg"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 1,
+        "fields": {
+            "value": 8,
+            "description": "Great movie!",
+            "sender": 1,
+            "movie": 1,
+            "create_time": "2023-09-28T12:00:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 2,
+        "fields": {
+            "value": 9,
+            "description": "Awesome!",
+            "sender": 2,
+            "movie": 1,
+            "create_time": "2023-09-30T09:30:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 3,
+        "fields": {
+            "value": 10,
+            "description": "Masterpiece.",
+            "sender": 3,
+            "movie": 2,
+            "create_time": "2023-09-25T15:45:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 4,
+        "fields": {
+            "value": 7,
+            "description": "Solid film.",
+            "sender": 1,
+            "movie": 3,
+            "create_time": "2023-09-21T18:20:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 5,
+        "fields": {
+            "value": 6,
+            "description": "Good watch.",
+            "sender": 2,
+            "movie": 4,
+            "create_time": "2023-09-19T21:10:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 6,
+        "fields": {
+            "value": 9,
+            "description": "Really enjoyed it!",
+            "sender": 3,
+            "movie": 5,
+            "create_time": "2023-09-18T14:30:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 7,
+        "fields": {
+            "value": 8,
+            "description": "Well made.",
+            "sender": 1,
+            "movie": 6,
+            "create_time": "2023-09-16T16:40:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 8,
+        "fields": {
+            "value": 9,
+            "description": "Impressive.",
+            "sender": 2,
+            "movie": 7,
+            "create_time": "2023-09-14T10:25:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 9,
+        "fields": {
+            "value": 8,
+            "description": "Entertaining.",
+            "sender": 3,
+            "movie": 8,
+            "create_time": "2023-09-12T19:05:00Z"
+        }
+    },
+    {
+        "model": "movie_rating_platform.rating",
+        "pk": 10,
+        "fields": {
+            "value": 7,
+            "description": "Worth a watch.",
+            "sender": 1,
+            "movie": 9,
+            "create_time": "2023-09-10T22:15:00Z"
+        }
+    }
+]
