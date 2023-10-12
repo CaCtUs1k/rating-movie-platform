@@ -81,6 +81,7 @@ TEMPLATES = [
     },
 ]
 
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 WSGI_APPLICATION = "core.wsgi.application"
