@@ -50,5 +50,3 @@ Description: Optimize the CSS codebase by refactoring and breaking it down into 
 ![image](https://github.com/CaCtUs1k/rating-movie-platform/assets/78649918/0c85b2df-0b35-4822-8ae5-a72bd6f2f09c)
 
 ![image](https://github.com/CaCtUs1k/rating-movie-platform/assets/78649918/329f744e-7864-45b9-9eff-ca8e864646a2)
-
-
