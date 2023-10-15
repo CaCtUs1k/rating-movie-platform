@@ -41,7 +41,11 @@
     {% for movie in visitor.wishlist.all %}
       <div class="model-show">
         <div class="col-sm-3 pl-0">
-          <img style="border-radius: 20px" class="photo" src="{% static 'images/poster.jpg' %}" alt="Poster">
+          {% if movie.poster %}
+            <img style="border-radius: 20px;max-width: 200px;max-height: 280px;width: auto;height: 100%;" src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="poster-image">
+          {% else %}
+            <p>No poster available</p>
+          {% endif %}
         </div>
         <div class="col-sm-9">
           <a class="model-instance" href="{% url 'movie_rating:movie-detail' pk=movie.pk %}"><strong>{{ movie }}</strong></a>
