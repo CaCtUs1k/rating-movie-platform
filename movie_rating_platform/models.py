@@ -35,7 +35,7 @@ class Movie(models.Model):
             MaxValueValidator(datetime.datetime.now().year),
         ]
     )
-    poster_link = models.CharField(max_length=255, null=True, blank=True)
+    poster = models.ImageField(upload_to="posters/", null=True, blank=True)
     genres = models.ManyToManyField(Genre, "movies")
 
     def save(self, *args, **kwargs):

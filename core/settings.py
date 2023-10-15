@@ -21,9 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ["DJANGO_SECRET_KEY", "dfg123"]
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
-SECRET_KEY = "khfvds-120918oinfviokalerm"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "crispy_forms",
     "crispy_bootstrap4",
+    "storages"
 ]
 
 MIDDLEWARE = [
@@ -95,6 +95,14 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'jxwfhanj',
+#         'USER': 'jxwfhanj',
+#         'PASSWORD': 'g1uuIvNe4BimKrkheZj0NW-iEQ0t19ks',
+#         'HOST': 'cornelius.db.elephantsql.com',
+#         'PORT': '5432',
+#     }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -145,12 +153,24 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-#
-# MEDIA_URL = 'media/'
-#
-# MEDIA_ROOT = BASE_DIR / "media"
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+AWS_QUERYSTRING_AUTH = False
+
+AWS_S3_FILE_OVERWRITE = False
