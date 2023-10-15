@@ -190,13 +190,20 @@ def register(request):
 
 def change_avatar(request, pk):
     visitor = Visitor.objects.get(pk=pk)
-    avatars = ['avatars/black.jpg', 'avatars/nibbler.jpg']
+    avatars = [
+        'avatars/bart.jpg',
+        'avatars/black.jpg',
+        'avatars/flower.jpg',
+        'avatars/liliput.jpg',
+        'avatars/nibbler.jpg',
+        'avatars/sponge_bob.jpg',
+    ]
 
     if request.method == 'POST':
-        form = AvatarForm(request.POST, instance=visitor)
-        if form.is_valid():
-            form.save()
-            return redirect('movie_rating:visitor-detail', pk=pk)
+        selected_avatar = request.POST.get('avatar')
+        visitor.avatar = selected_avatar
+        visitor.save()
+        return redirect('movie_rating:visitor-detail', pk=pk)
     else:
         form = AvatarForm(instance=visitor)
 

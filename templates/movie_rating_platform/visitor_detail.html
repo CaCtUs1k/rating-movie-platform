@@ -4,8 +4,7 @@
 {% block content %}
   <div style="display: flex" class="centered">
     <div class="profile-photo col-sm-4" style="margin: 20px 0;">
-      <img style="height: 80%; margin-top: 25px" src="{% static 'avatars/nibbler.jpg' %}">
-{#      <img src="{{ visitor.avatar.url }}" alt="{{ visitor.username }} Avatar" width="120" height="120">#}
+      <img style="height: 80%; margin-top: 25px" src="{{ visitor.avatar.url }}" alt="{{ visitor.username }} Avatar">
     </div>
     <div>
       <h1>

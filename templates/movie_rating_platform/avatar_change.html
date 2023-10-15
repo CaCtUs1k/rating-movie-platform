@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
-  <p>Сoming soon...</p>
-  <a class="btn btn-secondary" href="{% url 'movie_rating:visitor-detail' pk=user.pk %}">Return</a>
+  <div class="centered">
+    <h1>Choose your avatar</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="hide" >{{ form.as_p }}</div>
+      <div style="margin-top: 20px" class="avatar-list">
+        {% for avatar in avatars %}
+          <label>
+            <input type="radio" name="avatar" value="{{ avatar }}">
+            <img style="height: 120px; width: 120px" src="{% static avatar %}">
+          </label>
+        {% endfor %}
+      </div>
+      <button style="margin-top: 30px" class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
 {% endblock %}

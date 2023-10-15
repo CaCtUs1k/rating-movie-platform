@@ -6,6 +6,10 @@ p {
     font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     font-size: 25px;
 }
+
+.hide {
+    display: none;
+}
 /* header */
 .sticky-header {
     position: fixed;
