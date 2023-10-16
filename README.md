@@ -45,6 +45,7 @@ Description: Optimize the CSS codebase by refactoring and breaking it down into 
 <br>Status: Pending
 
 <h2>Demo:</h2>
+
 ![image](https://github.com/CaCtUs1k/rating-movie-platform/assets/78649918/02b76b13-7514-436b-817f-50cda7ff7e4e)
 
 ![image](https://github.com/CaCtUs1k/rating-movie-platform/assets/78649918/0c85b2df-0b35-4822-8ae5-a72bd6f2f09c)
