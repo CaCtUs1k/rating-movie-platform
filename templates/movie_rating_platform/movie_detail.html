@@ -4,7 +4,7 @@
   <div class="centered">
     <h1>
       Movie
-      {% if user.is_superuser %}
+      {% if user.is_staff %}
         <a href="{% url 'movie_rating:movie-delete' pk=movie.id %}" class="btn btn-danger link-to-page">
           Delete
         </a>
