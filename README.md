@@ -3,7 +3,15 @@ This project is a rating movie platform where users can rate and review movies. 
 <h2>Instructions for Testing</h2>
 1) Load project and unpack zip
 
-2) Run the folder in the IDE
+2) Run the folder in the IDE and use following commands:
+
+`python -m venv venv`
+
+`venv\Scripts\activate (on Windows)`
+
+`source venv/bin/activate (on macOS)`
+
+`pip install -r requirements.txt`
 
 3) Use the following command to load prepared data from fixture to test application:
  
